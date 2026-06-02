@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme{
+  --color-blue-200: #171E27;
+  --color-cyan-200: #32a09c;
+  --color-gray-200: #F8FAFC;
+  --color-gray-300: #E2E8F0;
+}
+
+.reveal-element{
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-element.active{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100{
+  transition-delay: 100ms;
+}
+
+.delay-200{
+  transition-delay: 200ms;
+}
+
+.delay-300{
+  transition-delay: 300ms;
+}
+
+.delay-400{
+  transition-delay: 400ms;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
