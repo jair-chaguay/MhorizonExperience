@@ -1,31 +1,28 @@
+import { useScroll } from "../../hooks/useScroll"
+import { NAV_LINK_STYLES, NAV_ITEMS } from "../../utils/constants"
 
 export const Header = () => {
-    const navLinks = "relative text-gray-200 font-medium text-[0.95rem] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:text-cyan-200 after:content-[''] after:absolute after:left-0 after:-bottom-[5px] after:h-[2px] after:w-0 after:bg-text-cyan-200 after:transition-all after:duration-300 hover:after:w-full"
-  
+    const isScrolled = useScroll(40);
+    
     return (
-    <header className="fixed py-6.25 px-0 w-full top-0 z-250 border-b bg-blue-200" id="navbar">
-        <div className = "max-w-310 my-0 mx-auto px-[5%] flex justify-between items-center">
-            <img src="/images/mh.svg" alt="MHORIZON Experience" className="h-8.75 object-contain"/>
-             <nav className="flex gap-8 items-center">
-                <a href="#origen" className= {navLinks}>
-                    ¿Qué Somos?
-                </a>
-                <a href="#programa" className={navLinks}>
-                    Programa Tributario
-                </a>
-                <a href="#beneficios" className={navLinks}>
-                    Propuesta de Valor
-                </a>
-                <a href="#noticias" className={navLinks}>
-                    Informativos
-                </a>
-                <a href="#campus" className={navLinks}>
-                    <i className=""/> Campus Virtual
-                </a>
-             </nav>
-            
-        </div>
-
-    </header>
-  )
+        <header className={`fixed w-full top-0 z-250 bg-blue-200 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] border-b border-transparent ${isScrolled ? 'py-3.75' : 'py-6.25'
+            }`} id="navbar">
+            <div className={`max-w-full mx-auto transition-all duration-500 flex justify-between items-center ${isScrolled ?
+                'bg-[#171e27d9] backdrop-blur-4 shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-white/5 py-3 px-7.5 rounded-full w-[90%] xl:w-full'
+                : 'px-[5%] w--full'
+                }`}>
+                <img src="/images/mh.svg" alt="MHORIZON Experience" className="h-8.75 object-contain transition-all duration-500" />
+                <nav className="hidden lg:flex gap-8 items-center">
+                    {NAV_ITEMS.map((item) => (
+                        <a key={item.href} href={item.href} className={NAV_LINK_STYLES}>
+                            {item.label}
+                        </a>
+                    ))}
+                    <a href="#campus" className="bg-[#32a09c26] text-cyan-200 py-2.5 px-6 rounded-full text-[0.95rem] font-bold flex items-center gap-2 border border-[#32a09c4d] transition-all duration-500 hover:bg-cyan-200 hover:text-white">
+                        <i className="ph-bold ph-laptop" /> Campus Virtual
+                    </a>
+                </nav>
+            </div>
+        </header>
+    )
 }
