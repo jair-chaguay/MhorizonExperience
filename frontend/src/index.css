@@ -6,7 +6,77 @@
   --color-cyan-200: #32a09c;
   --color-gray-200: #F8FAFC;
   --color-gray-300: #E2E8F0;
+  --font--Jakarta: "Jakarta";
+  --font-Inter: "Inter";
 }
+
+@font-face{
+  font-family: "Jakarta";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/plusJakarta/PlusJakartaSans-Regular.ttf");
+}
+
+@font-face{
+  font-family: "Jakarta";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./assets/fonts/plusJakarta/PlusJakartaSans-ExtraBold.ttf");
+}
+
+@font-face{
+  font-family: "Jakarta";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("./assets/fonts/plusJakarta/PlusJakartaSans-Light.ttf");
+}
+
+@font-face{
+  font-family: "Jakarta";
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url("./assets/fonts/plusJakarta/PlusJakartaSans-Bold.ttf");
+}
+
+
+
+@font-face{
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/Inter/Inter-Regular.otf") format("woff2");
+}
+
+@font-face{
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./assets/fonts/Inter/Inter-ExtraBold.otf") format("woff2");
+}
+
+@font-face{
+  font-family: "Jakarta";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("./assets/fonts/Inter/Inter-Light-BETA.otf") format("woff2");
+}
+
+@font-face{
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url("./assets/fonts/Inter/Inter-Bold.otf") format("woff2");
+}
+
+
 
 .reveal-element{
   opacity: 0;

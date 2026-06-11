@@ -5,13 +5,13 @@ export const Beneficios = () => {
     <section id="beneficios" className="py-30 w-full bg-[#F4F7F9]">
       <div className="max-w-310 mx-auto px-[5%]">        
         <div className="text-center" data-aos="fade-up">
-          <span className="inline-block font-['Plus_Jakarta_Sans'] font-bold text-[0.85rem] uppercase tracking-[2px] text-[#32A09C] mb-3.75">
+          <span className="inline-block font-Jakarta font-bold text-[0.85rem] uppercase tracking-[2px] text-[#32A09C] mb-3.75">
             {BENEFICIOS_HEADER.overline}
           </span>
-          <h2 className="text-[#0F172A] font-['Plus_Jakarta_Sans'] font-extrabold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] mb-6">
+          <h2 className="text-[#0F172A] font-Jakarta font-bold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] mb-6">
             {BENEFICIOS_HEADER.title}
           </h2>
-          <p className="max-w-175 mx-auto text-[#475569] font-['Inter'] text-[1.1rem] leading-[1.7]">
+          <p className="max-w-175 mx-auto text-[#475569] font-Inter text-[1.1rem] leading-[1.7]">
             {BENEFICIOS_HEADER.description}
           </p>
         </div>
@@ -28,10 +28,10 @@ export const Beneficios = () => {
                 <i className={item.icon}></i>
               </div>              
               <div>
-                <h4 className="text-[#0F172A] font-['Plus_Jakarta_Sans'] font-bold text-[1.15rem] leading-[1.2] tracking-[-0.02em] mb-2">
+                <h4 className="text-[#0F172A] font-Jakarta font-bold text-[1.15rem] leading-[1.2] tracking-[-0.02em] mb-2">
                   {item.title}
                 </h4>
-                <p className="m-0 text-[#475569] font-['Inter'] text-[0.95rem] leading-[1.7]">
+                <p className="m-0 text-[#475569] font-Inter text-[0.95rem] leading-[1.7]">
                   {item.description}
                 </p>
               </div>

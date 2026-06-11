@@ -1,13 +1,11 @@
 // src/components/Faq.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FAQ_HEADER, FAQ_DATA } from '../../types/faq.constants';
 
 export const Faq = () => {
-  // Estado para controlar qué pregunta está abierta (null si todas están cerradas)
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
-    // Si haces clic en la que ya está abierta, se cierra. Si no, se abre la nueva.
     setActiveIndex(activeIndex === index ? null : index);
   };
 
@@ -17,12 +15,11 @@ export const Faq = () => {
         
         {/* Cabecera */}
         <div className="text-center" data-aos="fade-up">
-          <h2 className="text-[#0F172A] font-['Plus_Jakarta_Sans'] font-extrabold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] m-0">
+          <h2 className="text-[#0F172A] font-Jakarta font-bold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] m-0">
             {FAQ_HEADER}
           </h2>
         </div>
         
-        {/* Contenedor de FAQs */}
         <div className="max-w-[800px] mx-auto mt-[40px]" data-aos="fade-up" data-aos-delay="100">
           
           {FAQ_DATA.map((faq, index) => {
@@ -37,9 +34,8 @@ export const Faq = () => {
                     : "border-transparent bg-white"
                   }`}
               >
-                {/* Pregunta (Clickable) */}
                 <div 
-                  className="p-[25px_30px] cursor-pointer flex justify-between items-center font-['Plus_Jakarta_Sans'] font-bold text-[#0F172A] text-[1.1rem]"
+                  className="p-[25px_30px] cursor-pointer flex justify-between items-center font-Jakarta font-bold text-[#0F172A] text-[1.1rem]"
                   onClick={() => toggleFaq(index)}
                 >
                   {faq.question}
@@ -55,7 +51,6 @@ export const Faq = () => {
                   </div>
                 </div>
 
-                {/* Respuesta animada con CSS Grid */}
                 <div 
                   className={`grid transition-all duration-300 ease-in-out text-[#475569]
                     ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}

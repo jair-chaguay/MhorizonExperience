@@ -1,5 +1,4 @@
 // src/components/Footer.tsx
-import React from 'react';
 import { FOOTER_DATA } from '../../types/ctFooter';
 
 export const Footer = () => {
@@ -17,14 +16,14 @@ export const Footer = () => {
               alt={FOOTER_DATA.logoAlt} 
               className="h-[50px] brightness-0 invert mb-[25px] object-contain" 
             />
-            <p className="max-w-full lg:max-w-[85%] font-['Inter'] leading-[1.7] m-0">
+            <p className="max-w-full lg:max-w-[85%] font-Inter leading-[1.7] m-0">
               {FOOTER_DATA.description}
             </p>
           </div>
           
           {/* Columna 2: Navegación */}
           <div>
-            <h4 className="text-white font-['Plus_Jakarta_Sans'] font-bold text-[1.1rem] mb-[20px] tracking-[1px]">
+            <h4 className="text-white font-Jakarta font-bold text-[1.1rem] mb-[20px] tracking-[1px]">
               Navegación
             </h4>
             <ul className="list-none p-0 m-0 space-y-[12px]">
@@ -40,12 +39,12 @@ export const Footer = () => {
           
           {/* Columna 3: Contacto */}
           <div>
-            <h4 className="text-white font-['Plus_Jakarta_Sans'] font-bold text-[1.1rem] mb-[20px] tracking-[1px]">
+            <h4 className="text-white font-Jakarta font-bold text-[1.1rem] mb-[20px] tracking-[1px]">
               Contáctanos
             </h4>
             <ul className="list-none p-0 m-0 space-y-[12px]">
               {FOOTER_DATA.contactLinks.map((item, idx) => (
-                <li key={idx} className="font-['Inter']">
+                <li key={idx} className="font-Inter">
                   {item.isLink ? (
                     <a 
                       href={item.href} 
@@ -66,7 +65,7 @@ export const Footer = () => {
         
         {/* Derechos y Redes Sociales */}
         <div className="flex justify-between items-center flex-wrap gap-[20px]">
-          <p className="m-0 text-[0.95rem] font-['Inter']">
+          <p className="m-0 text-[0.95rem] font-Inter">
             {FOOTER_DATA.copyright}
           </p>
           <div className="flex gap-[15px] text-[1.5rem]">

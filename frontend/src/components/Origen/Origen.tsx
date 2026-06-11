@@ -8,15 +8,15 @@ export const Origen = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12.5 lg:gap-20 items-center">
           
           <div data-aos="fade-right">
-            <span className="inline-block font-['Plus_Jakarta_Sans'] font-bold text-[0.85rem] uppercase tracking-[2px] text-[#32A09C] mb-3.75">
+            <span className="inline-block font-Jakarta font-bold text-[0.85rem] uppercase tracking-[2px] text-[#32A09C] mb-3.75">
               {ORIGEN_DATA.overline}
             </span>
             
-            <h2 className="text-[#0F172A] font-['Plus_Jakarta_Sans'] font-extrabold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] mb-6">
+            <h2 className="text-[#0F172A] font-Jakarta font-bold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] mb-6">
               {ORIGEN_DATA.title}
             </h2>
             
-            <div className="text-[#475569] font-['Inter'] text-[1.1rem] leading-[1.7] space-y-[1.2rem]">
+            <div className="text-[#475569] font-Inter text-[1.1rem] leading-[1.7] space-y-[1.2rem]">
               <p>
                 Nuestra historia comienza con <strong className="font-semibold text-[#0F172A]">MHORIZON</strong>, firma corporativa especializada en llevar el área tributaria de empresas nacionales y multinacionales de alto nivel.
               </p>
@@ -32,7 +32,7 @@ export const Origen = () => {
               href={ORIGEN_DATA.linkPortal} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-9 py-4 font-['Plus_Jakarta_Sans'] font-bold text-[1rem] rounded-lg transition-all duration-400 bg-blue-200 text-white mt-5 hover:bg-black hover:-translate-y-0.75 hover:shadow-[0_20px_40px_-10px_rgba(23,30,39,0.25)]"
+              className="inline-flex items-center justify-center gap-2.5 px-9 py-4 font-Jakarta font-bold text-[1rem] rounded-lg transition-all duration-400 bg-blue-200 text-white mt-5 hover:bg-black hover:-translate-y-0.75 hover:shadow-[0_20px_40px_-10px_rgba(23,30,39,0.25)]"
             >
               {ORIGEN_DATA.btnText} <i className="ph-bold ph-arrow-up-right"></i>
             </a>

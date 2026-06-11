@@ -13,11 +13,11 @@ export const Stats = () => {
           >
             <i className={`${item.icon} text-[1.8rem] mb-1.25 text-white opacity-100`}></i>
             
-            <h3 className="text-white text-[1.2rem] mb-0.5 font-extrabold font-['Plus_Jakarta_Sans'] leading-[1.2] tracking-[-0.02em]">
+            <h3 className="text-white text-[1.2rem] mb-0.5 font-extrabold font-Jakarta leading-[1.2] tracking-[-0.02em]">
               {item.title}
             </h3>
 
-            <p className="m-0 text-[0.75rem] font-semibold uppercase tracking-[1px] font-['Inter'] text-white">
+            <p className="m-0 text-[0.75rem] font-semibold uppercase tracking-[1px] font-Inter text-white">
               {item.subtitle}
             </p>
           </div>
