@@ -2,6 +2,9 @@
 @plugin "@tailwindcss/typography";
 
 @theme{
+  --color-brand: #32a09c;
+  --color-brandHover: #247a76;
+  --color-dark: #0f172a;
   --color-blue-200: #171E27;
   --color-cyan-200: #32a09c;
   --color-gray-200: #F8FAFC;

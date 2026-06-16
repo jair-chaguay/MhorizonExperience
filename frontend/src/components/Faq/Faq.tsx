@@ -10,66 +10,62 @@ export const Faq = () => {
   };
 
   return (
-    <section className="py-[120px] w-full bg-white">
-      <div className="max-w-[1240px] mx-auto px-[5%]">
-        
-        {/* Cabecera */}
-        <div className="text-center" data-aos="fade-up">
-          <h2 className="text-[#0F172A] font-Jakarta font-bold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] m-0">
-            {FAQ_HEADER}
-          </h2>
-        </div>
-        
-        <div className="max-w-[800px] mx-auto mt-[40px]" data-aos="fade-up" data-aos-delay="100">
-          
-          {FAQ_DATA.map((faq, index) => {
-            const isActive = activeIndex === index;
+    <section className="py-24 px-6 md:px-12 max-w-360 mx-auto">
 
-            return (
-              <div 
-                key={faq.id}
-                className={`mb-[15px] overflow-hidden transition-all duration-300 rounded-[16px] border-2 shadow-[0_5px_15px_rgba(0,0,0,0.05)]
-                  ${isActive 
-                    ? "border-[#32A09C] bg-gradient-to-b from-white to-[rgba(50,160,156,0.02)] shadow-[0_15px_30px_rgba(50,160,156,0.15)]" 
-                    : "border-transparent bg-white"
-                  }`}
+      <div className="text-center mb-16">
+        <p className="text-brand font-bold tracking-widest text-xs uppercase mb-3">{FAQ_HEADER.overline}</p>
+        <h2 className="font-display text-4xl font-extrabold text-dark tracking-tight mb-4">{FAQ_HEADER.title}</h2>
+        <p className="text-slate-500 font-light">{FAQ_HEADER.subtitle}</p>
+      </div>
+
+      <div className="max-w-200 mx-auto mt-10" data-aos="fade-up" data-aos-delay="100">
+
+        {FAQ_DATA.map((faq, index) => {
+          const isActive = activeIndex === index;
+
+          return (
+            <div
+              key={faq.id}
+              className={`mb-3.75 overflow-hidden transition-all duration-300 rounded-2xl border-2 shadow-[0_5px_15px_rgba(0,0,0,0.05)]
+                  ${isActive
+                  ? "border-[#32A09C] bg-linear-to-b from-white to-[rgba(50,160,156,0.02)] shadow-[0_15px_30px_rgba(50,160,156,0.15)]"
+                  : "border-transparent bg-white"
+                }`}
+            >
+              <div
+                className="p-[25px_30px] bg-blue-200 cursor-pointer flex justify-between items-center font-Jakarta font-bold text-white text-[1.1rem]"
+                onClick={() => toggleFaq(index)}
               >
-                <div 
-                  className="p-[25px_30px] cursor-pointer flex justify-between items-center font-Jakarta font-bold text-[#0F172A] text-[1.1rem]"
-                  onClick={() => toggleFaq(index)}
-                >
-                  {faq.question}
-                  
-                  {/* Ícono de Plus/Cruz */}
-                  <div className={`w-[40px] h-[40px] rounded-full flex justify-center items-center text-[1.2rem] shrink-0 transition-transform duration-300
-                    ${isActive 
-                      ? "bg-[#32A09C] text-white rotate-45" 
-                      : "bg-[#F4F7F9] text-[#475569] rotate-0"
-                    }`}
-                  >
-                    <i className="ph-bold ph-plus"></i>
-                  </div>
-                </div>
+                {faq.question}
 
-                <div 
-                  className={`grid transition-all duration-300 ease-in-out text-[#475569]
+                <div className={`w-10 h-10 rounded-full flex justify-center items-center text-[1.2rem] shrink-0 transition-transform duration-300
+                    ${isActive
+                    ? "bg-[#515858] text-white rotate-45"
+                    : "bg-[#F4F7F9] text-[#475569] rotate-0"
+                  }`}
+                >
+                  <i className="ph-bold ph-plus"></i>
+                </div>
+              </div>
+
+              <div
+                className={`grid transition-all duration-300 ease-in-out text-[#bac1cc]
                     ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}
                   `}
-                >
-                  <div className="overflow-hidden">
-                    <p className="px-[30px] pb-[25px] pt-[10px] m-0 font-['Inter'] leading-[1.7]">
-                      {faq.answer}
-                    </p>
-                  </div>
+              >
+                <div className="overflow-hidden bg-blue-200">
+                  <p className="px-7.5 pb-6.25 pt-2.5 m-0 font-['Inter'] leading-[1.7]">
+                    {faq.answer}
+                  </p>
                 </div>
-
               </div>
-            );
-          })}
 
-        </div>
+            </div>
+          );
+        })}
 
       </div>
+
     </section>
   );
 };

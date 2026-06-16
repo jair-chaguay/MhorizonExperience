@@ -1,4 +1,3 @@
-import { Beneficios } from "./components/Beneficios/Beneficios"
 import { Contacto } from "./components/Contacto/Contacto"
 import { Director } from "./components/Director/Director"
 import { Faq } from "./components/Faq/Faq"
@@ -8,6 +7,7 @@ import { Modalidades } from "./components/Modalidades/Modalidades"
 import { Noticias } from "./components/Noticias/Noticias"
 import { Origen } from "./components/Origen/Origen"
 import { Programa } from "./components/Programa/Programa"
+import { ProgramaEsp } from "./components/Programa/ProgramaEsp"
 import { Hero } from "./pages/Hero"
 
 function App() {
@@ -16,10 +16,10 @@ function App() {
     <>
       <Hero/>   
       <Origen/>  
-      <Programa/>   
-      <Director/>
-      <Beneficios/>
+      <Programa/> 
+      <ProgramaEsp/> 
       <Modalidades/>
+      <Director/>
       <Noticias/>
       <Faq/>
       <Contacto/>

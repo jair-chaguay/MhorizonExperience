@@ -1,45 +1,76 @@
-// src/components/Modalidades.tsx
-import { MODALIDADES_HEADER, MODALIDADES_DATA } from "../../types/modalidades.constants";
+import { motion } from 'framer-motion';
+import { MODALITIES_DATA } from '../../types/modalidades.constants';
 
 export const Modalidades = () => {
+  const { header, modalities } = MODALITIES_DATA;
+
   return (
-    <section className="py-30 w-full bg-white">
-      <div className="max-w-310 mx-auto px-[5%]">
-        <div className="text-center" data-aos="fade-up">
-          <span className="inline-block font-Jakarta font-bold text-[0.85rem] uppercase tracking-[2px] text-[#32A09C] mb-3.75">
-            {MODALIDADES_HEADER.overline}
-          </span>
-          <h2 className="text-[#0F172A] font-Jakarta font-bold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] mb-6">
-            {MODALIDADES_HEADER.title}
-          </h2>
-          <p className="max-w-175 mx-auto text-[#475569] font-Inter text-[1.1rem] leading-[1.7]">
-            {MODALIDADES_HEADER.description}
-          </p>
-        </div>
+    <section id="modalities" className="py-24 bg-dark px-6 md:px-12 relative overflow-hidden">
+      {/* Elementos de fondo */}
+      <div className="absolute inset-0 opacity-10 animated-grid pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-brand/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+      <div className="max-w-[1440px] mx-auto relative z-10">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-15">
-          
-          {MODALIDADES_DATA.map((modality) => (
-            <div 
-              key={modality.id}
-              className="bg-white p-[50px_40px] rounded-2xl text-center border border-[#171E2714] transition-all duration-400 shadow-[0_10px_40px_-10px_rgba(23,30,39,0.08)] hover:border-[#32A09C] hover:shadow-[0_20px_40px_-10px_rgba(23,30,39,0.25)] hover:-translate-y-1.25"
-              data-aos={modality.aosType}
+        {/* Header Animado */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16 max-w-2xl mx-auto"
+        >
+          <p className="text-brand font-bold tracking-widest text-xs uppercase mb-3">
+            {header.badge}
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+            {header.title}
+          </h2>
+          <p className="text-slate-400 font-light">
+            {header.description}
+          </p>
+        </motion.div>
+
+        {/* Tarjetas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {modalities.map((modality) => (
+            <motion.div 
+              key={modality.id} 
+              initial={{ opacity: 0, x: modality.direction }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="bg-brand rounded-xl p-10 md:p-12 text-white shadow-2xl hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(50,160,156,0.4)] transition-all duration-300 relative overflow-hidden group"
             >
-              <div className="inline-block p-3.75 bg-[#32A09C1A] rounded-lg mb-6">
-                <i className={`${modality.icon} text-[3.5rem] text-[#32A09C] block`}></i>
+              <div className={`absolute w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 ${modality.blobPosition}`}></div>
+              
+              <div className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-sm w-fit mb-6 relative z-10">
+                {modality.badge}
               </div>
               
-              <h3 className="text-[#0F172A] font-Jakarta font-extrabold text-[1.6rem] leading-[1.2] tracking-[-0.02em] mb-3.75">
+              <h3 className="font-display text-3xl font-bold mb-4 relative z-10">
                 {modality.title}
               </h3>
-              <p className="text-[#475569] font-Inter text-[1rem] leading-[1.7] m-0">
+              
+              <p className="text-white/90 text-sm leading-relaxed mb-8 font-light relative z-10">
                 {modality.description}
               </p>
-            </div>
+              
+              <ul className="space-y-4 mb-10 text-sm font-medium relative z-10">
+                {modality.features.map((feature, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-sm bg-white/60"></div> 
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              
+              <button className="bg-white text-brand font-display font-bold text-sm py-4 px-8 rounded-md inline-block hover:bg-slate-100 transition-colors relative z-10 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                {modality.buttonText}
+              </button>
+            </motion.div>
           ))}
-
         </div>
-
       </div>
     </section>
   );

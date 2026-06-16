@@ -1,67 +1,56 @@
-import React from 'react';
-import { PROGRAMA_HEADER, MODULES_DATA } from '../../types/programa.constants';
-interface ProgramaProps {
-  onOpenModal?: (moduleTitle: string) => void;
-}
+import { VALUE_PROPS_HEADER, VALUE_PROPS_DATA } from '../../types/programa.constants' 
+import { motion } from 'framer-motion';
 
-export const Programa: React.FC<ProgramaProps> = ({ onOpenModal }) => {
+export const Programa = () => {
   return (
-    <section id="programa" className="py-3' w-full bg-[#F4F7F9]">
-      <div className="max-w-310 mx-auto py-21 px-[5%]">
-        <div className="text-center mb-15" data-aos="fade-up">
-          <span className="inline-block font-Jakarta font-bold text-[0.85rem] uppercase tracking-[2px] text-[#32A09C] mb-3.75">
-            {PROGRAMA_HEADER.overline}
-          </span>
-          <h2 className="text-[#0F172A] font-Jakarta font-bold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] mb-6">
-            {PROGRAMA_HEADER.title}
-          </h2>
-          <p className="max-w-175 mx-auto text-[#475569] font-Inter text-[1.1rem] leading-[1.7]">
-            {PROGRAMA_HEADER.description}
+    <section id="value-props" className="py-24 bg-dark px-6 md:px-12 border-y border-slate-800 relative overflow-hidden">
+      <div className="max-w-360 mx-auto relative z-10">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16 max-w-2xl mx-auto"
+        >
+          <p className="text-brand font-bold tracking-widest text-xs uppercase mb-3">
+            {VALUE_PROPS_HEADER.overline}
           </p>
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+            {VALUE_PROPS_HEADER.title}
+          </h2>
+          <p className="text-slate-400 font-light">
+            {VALUE_PROPS_HEADER.description}
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {VALUE_PROPS_DATA.map((item) => {
+            const IconComponent = item.icon;
+            
+            return (
+              <motion.div 
+                key={item.id} 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: item.delay, ease: "easeOut" }}
+                className="bg-white p-8 rounded-xl border border-slate-100 hover:-translate-y-3 hover:shadow-2xl transition-all duration-300 shadow-lg flex flex-col"
+              >
+                <div className="w-14 h-14 bg-brand/10 rounded-md flex items-center justify-center text-brand mb-6">
+                  <IconComponent className="w-7 h-7" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-dark mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-slate-500 text-sm leading-relaxed grow font-light">
+                  {item.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {MODULES_DATA.map((mod) => (
-            <div 
-              key={mod.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(23,30,39,0.08)] transition-all duration-400 border border-[#171E270D] flex flex-col hover:-translate-y-2.5 hover:shadow-[0_20px_40px_-10px_rgba(23,30,39,0.25)] hover:border-[#32A09C]"
-              data-aos="fade-up" 
-              data-aos-delay={mod.delay}
-            >
-              
-              <div className="relative h-60 overflow-hidden">
-                <img 
-                  src={mod.image} 
-                  alt={mod.title} 
-                  className="w-full h-full object-cover transition-transform duration-600 ease-in-out group-hover:scale-108"
-                />
-                <div className="absolute top-5 right-5 bg-white text-[#32A09C] w-11.25 h-11.25 flex justify-center items-center rounded-full font-Jakarta font-extrabold text-[1.2rem] shadow-[0_5px_15px_rgba(0,0,0,0.15)] z-10">
-                  {mod.id}
-                </div>
-              </div>
-              
-              <div className="p-[35px_30px] grow flex flex-col">
-                <h4 className="text-[#32A09C] font-Jakarta font-bold text-[1.3rem] mb-3.75 leading-[1.2] tracking-[-0.02em]">
-                  {mod.title}
-                </h4>
-                
-                <p className="text-[#475569] font-Inter text-[1rem] leading-[1.6] mb-6.25 grow">
-                  {mod.description}
-                </p>
-                
-                {/* Botón */}
-                <button 
-                  onClick={() => onOpenModal && onOpenModal(mod.title)}
-                  className="w-full bg-[#F4F7F9] text-[#32A09C] p-3.5 border border-[#E2E8F0] rounded-lg font-Jakarta font-bold text-[1rem] transition-all duration-400 flex justify-center items-center gap-2 hover:bg-[#32A09C] hover:text-white hover:border-[#32A09C]"
-                >
-                  Ver temario y contactar <i className="ph-bold ph-caret-right"></i>
-                </button>
-              </div>
-
-            </div>
-          ))}
-        </div>
-
       </div>
     </section>
   );

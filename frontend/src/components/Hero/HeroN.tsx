@@ -1,46 +1,56 @@
-import {HERO_IMAGES, HERO_CONTENT} from "../../types/hero.constants";
-import {useBackgroundRotator} from "../../hooks/useBackgroundRotator";
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { HERO_CONTENT } from "../../types/hero.constants";
 
 export const HeroN = () => {
-  const currentImage = useBackgroundRotator(HERO_IMAGES, 4000);
-
   return (
-    <section className = "relative pt-50 px-0 pb-35 bg-blue-200 overflow-hidden flex items-center min-h-[95vh]">
+    <section className="relative min-h-[95vh] flex flex-col justify-center pt-32 pb-20 px-6 md:px-12 overflow-hidden bg-transparent">
       
-      <div className= "absolute inset-0 bg-cover bg-center blur-2 scale-105 z-0 transition-all duration-1000 ease-in-out"
-        style = {{backgroundImage: `url(${currentImage})`}}
-      ></div>
+      <div className="absolute inset-0 z-[-1] overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover object-center animate-bg-zoom opacity-40" alt="" />
+        <div className="absolute inset-0 bg-linear-to-b from-white/70 via-white/80 to-transparent"></div>
+      </div>
       
-      <div className="absolute inset-0 bg-linear-to-b from-blue-200 to-[#171E27D9]  z-10"></div>
-      <div className="container mx-auto px-[5%] max-w-310 relative z-20 ">
-        <div 
-          className="max-w-225 mx-auto text-center flex flex-col items-center" 
-          data-aos="fade-up" 
-        >
+      <div className="absolute top-1/4 right-1/4 w-160 h-160 bg-brand/5 rounded-full blur-[120px] animate-float-slow pointer-events-none z-0"></div>
+      
+      <div className="max-w-360 mx-auto w-full relative z-20">
+        <div className="max-w-4xl">
           
-          <span className="inline-block font-bold text-[0.85rem] uppercase tracking-0.5 text-[#6EE7E1] mb-3.75 ">{HERO_CONTENT.overline}</span>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 tracking-tight text-dark"
+          >
+            {HERO_CONTENT.titleMain}
+          </motion.h1>
           
-          <h1 className="text-white mb-5 font-extrabold text-[clamp(2.8rem,5vw,4.5rem)] leading-[1.1] tracking-[-0.02em]">{HERO_CONTENT.titleMain} <br/> 
-            <span className="text-[#6EE7E1]">{HERO_CONTENT.titleHighlight}</span> 
-          </h1>
-
-          <p className="text-[#CBD5E1] text-[1.25rem] mb-10 font-light leading-[1.6] max-w-187.5 text-center">
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="text-slate-600 text-xl md:text-2xl mb-10 max-w-3xl leading-relaxed"
+          >
             {HERO_CONTENT.description}
-          </p>
+          </motion.p>
 
-          <div className="flex gap-4 flex-wrap justify-center">
-            <a href={HERO_CONTENT.primaryLink} className="inline-flex items-center justify-center gap-2.5 px-9 py-4 font-bold text-[1rem] rounded-2 transition-all duration-400 bg-[#32A09C] text-white border-[#32A09C] shadow-[0_8px_20px_-8px_#32A09C] hover:bg-[#247C79] hover:-translate-y-0.75 hover:shadow-[0_20px_40px_-10px_rgba(23,30,39,0.25)]">
-              {HERO_CONTENT.btnPrimaryText} <i className="ph-bold ph-arrow-right"></i>            </a>
-            <a 
-              href={HERO_CONTENT.secondaryLink} 
-              className="inline-flex items-center justify-center gap-2.5 px-9 py-4 font-['Plus_Jakarta_Sans'] font-bold text-[1rem] rounded-lg transition-all duration-400 cursor-pointer bg-transparent text-white border-2 border-white/40 hover:bg-white hover:text-blue-200 hover:-translate-y-0.75"
-            >
-              {HERO_CONTENT.btnSecondaryText}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            className="flex flex-wrap items-center gap-6"
+          >
+            <button className="bg-brand hover:bg-brandHover text-white font-body font-medium text-base py-3 px-6 rounded-md transition-all shadow-[0_4px_15px_rgba(50,160,156,0.4)] hover:shadow-[0_8px_25px_rgba(50,160,156,0.5)] hover:-translate-y-1 duration-300 cursor-pointer">
+              {HERO_CONTENT.btnPrimaryText}
+            </button>
+            <a href={HERO_CONTENT.primaryLink} className="text-slate-700 hover:text-brand font-body font-medium text-base py-3 px-4 transition-colors flex items-center gap-2 group">
+              {HERO_CONTENT.descriptionLink} 
+              <ArrowRight className="w-5 h-5 transform transition-transform group-hover:translate-x-1" />
             </a>
-          </div>
+          </motion.div>
+
         </div>
       </div>
-
     </section>
-  )
-}
+  );
+};

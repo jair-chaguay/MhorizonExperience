@@ -1,138 +1,117 @@
-import { CONTACTO_INFO, CONTACTO_FORM } from '../../types/contacto.constants';
+import { CONTACT_DATA } from '../../types/contacto.constants';
 
 export const Contacto = () => {
-  return (
-    <section id="contacto" className="py-30 w-full bg-[#F4F7F9]">
-      <div className="max-w-310 mx-auto px-[5%]">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[50px] lg:gap-[80px] items-center">
-          
-          <div data-aos="fade-right">
-            <span className="inline-block font-Jakarta font-bold text-[0.85rem] uppercase tracking-[2px] text-[#32A09C] mb-[15px]">
-              {CONTACTO_INFO.overline}
-            </span>
-            <h2 className="text-[#0F172A] font-Jakarta font-bold text-[2.8rem] leading-[1.2] tracking-[-0.02em] mb-[1.5rem]">
-              {CONTACTO_INFO.title}
-            </h2>
-            <p className="text-[#475569] font-Inter text-[1.15rem] leading-[1.7] mb-[40px]">
-              {CONTACTO_INFO.description}
-            </p>
-            
-            {/* Bloque: WhatsApp */}
-            <div className="flex gap-[20px] items-center mb-[25px]">
-              <i className={`${CONTACTO_INFO.phone.icon} text-[2.5rem] text-[#25D366]`}></i>
-              <div>
-                <span className="block text-[0.95rem] text-[#475569] font-Inter">
-                  {CONTACTO_INFO.phone.label}
-                </span>
-                <strong className="text-[#171E27] font-bold text-[1.2rem] font-Jakarta">
-                  {CONTACTO_INFO.phone.number}
-                </strong>
-              </div>
-            </div>
+  const { bgImage, header, contactItems, whatsapp, form } = CONTACT_DATA;
 
-            {/* Bloque: Ubicación */}
-            <div className="flex gap-[20px] items-center">
-              <i className={`${CONTACTO_INFO.location.icon} text-[2.5rem] text-[#32A09C]`}></i>
-              <div>
-                <span className="block text-[0.95rem] text-[#475569] font-Inter">
-                  {CONTACTO_INFO.location.label}
-                </span>
-                <strong className="text-[#171E27] font-bold text-[1.2rem] font-Jakarta">
-                  {CONTACTO_INFO.location.address}
-                </strong>
+  return (
+    <section 
+      id="contact" 
+      className="relative py-24 px-6 md:px-12  bg-fixed bg-center bg-cover" 
+      style={{ backgroundImage: `url('${bgImage}')` }}
+    >
+      <div className="absolute inset-0 bg-white/85 backdrop-blur-sm z-0 pointer-events-none"></div>
+      
+      <div className="max-w-360 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative z-10">
+        
+        {/* Contact Info Column */}
+        <div className="lg:col-span-5 rev-l">
+          <p className="text-brand font-bold tracking-widest text-xs uppercase mb-3">
+            {header.badge}
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold text-dark tracking-tight mb-6 leading-tight">
+            {header.title}
+          </h2>
+          <p className="text-slate-500 text-lg mb-10 font-light">
+            {header.description}
+          </p>
+          
+          <div className="space-y-8 mb-10">
+            {contactItems.map((item) => (
+              <div key={item.id} className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 cursor-default">
+                <div className="w-12 h-12 bg-white rounded-md shadow-md flex items-center justify-center text-brand border border-slate-100 shrink-0">
+                  <span className="material-symbols-outlined">{item.icon}</span>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                    {item.subtitle}
+                  </p>
+                  <p className="font-display font-bold text-dark text-lg">
+                    {item.title}
+                  </p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
           
-          {/* Columna Derecha: Formulario */}
-          <div 
-            className="bg-white p-[30px] md:p-[50px] rounded-[16px] shadow-[0_25px_50px_rgba(0,0,0,0.15)] border-t-[6px] border-[#32A09C] relative"
-            data-aos="fade-left"
+          {/* WhatsApp Button */}
+          <a 
+            href={whatsapp.url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-[#25D366] hover:bg-[#1ebb57] text-white font-display font-bold text-sm py-4 px-8 rounded-md transition-all shadow-[0_4px_20px_rgba(37,211,102,0.3)] hover:shadow-[0_8px_25px_rgba(37,211,102,0.5)] hover:-translate-y-1 inline-flex items-center gap-3"
           >
-            <form className="text-left">
-              <div className="mb-[20px]">
-                <label className="block mb-[8px] font-semibold text-[0.9rem] text-[#171E27] font-Inter">
-                  Nombre y Apellido
-                </label>
-                <input 
-                  type="text" 
-                  placeholder={CONTACTO_FORM.namePlaceholder} 
-                  required
-                  className="w-full p-[15px] border border-[#CBD5E1] rounded-[8px] font-Inter text-[1rem] bg-[#F8FAFC] transition-all duration-300 outline-none focus:border-[#32A09C] focus:bg-white"
-                />
-              </div>
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+            </svg>
+            {whatsapp.text}
+          </a>
+        </div>
 
-              {/* Correo */}
-              <div className="mb-[20px]">
-                <label className="block mb-[8px] font-semibold text-[0.9rem] text-[#171E27] font-Inter">
-                  Correo Electrónico
-                </label>
-                <input 
-                  type="email" 
-                  placeholder={CONTACTO_FORM.emailPlaceholder} 
-                  required
-                  className="w-full p-[15px] border border-[#CBD5E1] rounded-[8px] font-Inter text-[1rem] bg-[#F8FAFC] transition-all duration-300 outline-none focus:border-[#32A09C] focus:bg-white"
-                />
+        {/* Form Column */}
+        <div className="lg:col-span-7 rev-r">
+          <div className="bg-white rounded-xl p-10 md:p-14 shadow-2xl border border-slate-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-shadow duration-500">
+            <h3 className="font-display text-2xl font-bold text-dark mb-2">
+              {form.title}
+            </h3>
+            <p className="text-slate-500 text-sm mb-8">
+              {form.description}
+            </p>
+            
+            <form className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="fname" className="block text-xs font-bold text-slate-700 mb-2">Nombre</label>
+                  <input type="text" id="fname" className="w-full bg-slate-50 border border-slate-200 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all" placeholder="Tu nombre" />
+                </div>
+                <div>
+                  <label htmlFor="lname" className="block text-xs font-bold text-slate-700 mb-2">Apellido</label>
+                  <input type="text" id="lname" className="w-full bg-slate-50 border border-slate-200 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all" placeholder="Tu apellido" />
+                </div>
               </div>
-
-              {/* Teléfono */}
-              <div className="mb-[20px]">
-                <label className="block mb-[8px] font-semibold text-[0.9rem] text-[#171E27] font-Inter">
-                  Teléfono (WhatsApp)
-                </label>
-                <input 
-                  type="tel" 
-                  placeholder={CONTACTO_FORM.phonePlaceholder} 
-                  required
-                  className="w-full p-[15px] border border-[#CBD5E1] rounded-[8px] font-Inter text-[1rem] bg-[#F8FAFC] transition-all duration-300 outline-none focus:border-[#32A09C] focus:bg-white"
-                />
+              
+              <div>
+                <label htmlFor="email" className="block text-xs font-bold text-slate-700 mb-2">Correo Electrónico</label>
+                <input type="email" id="email" className="w-full bg-slate-50 border border-slate-200 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all" placeholder="tu@correo.com" />
               </div>
-
-              {/* Select Modalidad */}
-              <div className="mb-[20px]">
-                <label className="block mb-[8px] font-semibold text-[0.9rem] text-[#171E27] font-Inter">
-                  Modalidad preferida
-                </label>
-                <select 
-                  required 
-                  defaultValue=""
-                  className="w-full p-[15px] border border-[#CBD5E1] rounded-[8px] font-Inter text-[1rem] bg-[#F8FAFC] transition-all duration-300 outline-none focus:border-[#32A09C] focus:bg-white"
-                >
-                  <option value="" disabled>Selecciona una opción...</option>
-                  {CONTACTO_FORM.modalities.map((mod, idx) => (
-                    <option key={idx} value={mod}>{mod}</option>
+              
+              <div>
+                <label htmlFor="tel" className="block text-xs font-bold text-slate-700 mb-2">Teléfono / WhatsApp</label>
+                <input type="tel" id="tel" className="w-full bg-slate-50 border border-slate-200 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all" placeholder="+593 99 000 0000" />
+              </div>
+              
+              <div>
+                <label htmlFor="modalidad" className="block text-xs font-bold text-slate-700 mb-2">Programa de Interés</label>
+                <select id="modalidad" defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 text-slate-600 transition-all">
+                  <option value="" disabled>Selecciona una opción…</option>
+                  {form.programOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
                   ))}
                 </select>
               </div>
               
-              {/* Botón Enviar */}
-              <button 
-                type="button" 
-                className="w-full bg-[#32A09C] text-white p-[18px] text-[1.1rem] font-bold font-Jakarta rounded-[8px] mt-[10px] transition-all duration-400 shadow-[0_8px_20px_-8px_#32A09C] hover:bg-[#247C79] hover:-translate-y-[3px] hover:shadow-[0_20px_40px_-10px_rgba(23,30,39,0.25)]"
-              >
-                {CONTACTO_FORM.btnSubmit}
+              <button type="button" id="formBtn" className="w-full bg-brand hover:bg-brandHover text-white font-display font-bold py-4 rounded-md transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 mt-2">
+                {form.buttonText}
               </button>
-
-              {/* Separador */}
-              <div className="text-center my-[15px] text-[#94A3B8] text-[0.9rem] font-Inter">
-                {CONTACTO_FORM.separatorText}
-              </div>
-
-              {/* Botón WhatsApp */}
-              <a 
-                href={CONTACTO_INFO.whatsappLink} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full bg-[#25D366] text-white p-[16px] text-[1rem] font-bold font-Jakarta rounded-[8px] flex justify-center items-center gap-[10px] transition-all duration-400 hover:bg-[#1EBE53] hover:-translate-y-[3px] hover:shadow-[0_10px_20px_rgba(37,211,102,0.3)]"
-              >
-                <i className="ph-bold ph-whatsapp-logo text-[1.3rem]"></i> 
-                {CONTACTO_FORM.btnWhatsapp}
-              </a>
+              
+              <p className="text-center text-xs text-slate-400 mt-4">
+                {form.disclaimer}
+              </p>
             </form>
           </div>
-
         </div>
+        
       </div>
     </section>
   );

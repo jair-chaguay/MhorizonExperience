@@ -1,26 +1,53 @@
-import { CTA_DATA } from '../../types/ctFooter';
-export const Cta = () => {
+// Cta.tsx
+import React from 'react';
+import { CTA_DATA } from '../../types/contacto.constants';
+
+interface CtaProps {
+  openModal?: () => void;
+}
+
+export const Cta: React.FC<CtaProps> = ({ openModal }) => {
+  const { heading, description, primaryButton, whatsappButton } = CTA_DATA;
+
   return (
-    <section className="bg-gradient-to-br from-[#32A09C] to-[#247C79] py-[120px] text-white text-center relative overflow-hidden w-full">
+    <section className="py-24 px-6 md:px-12 bg-dark text-center relative overflow-hidden">
+      <div 
+        className="absolute inset-0 bg-brand opacity-20" 
+        style={{ backgroundImage: 'radial-gradient(circle at 50% -20%, #32a09c 0%, transparent 60%)' }}
+      ></div>
       
-      {/* Elementos Decorativos de Fondo */}
-      <div className="absolute w-[300px] h-[300px] bg-white/10 rounded-full -top-[100px] -left-[100px] z-0" />
-      <div className="absolute w-[500px] h-[500px] bg-[#171E27]/5 rounded-full -bottom-[200px] -right-[150px] z-0" />
-      
-      <div className="relative z-10 max-w-[800px] mx-auto px-[5%]" data-aos="zoom-in">
-        <h2 className="text-white font-Jakarta font-bold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] mb-[20px]">
-          {CTA_DATA.titleMain} <br />
-          {CTA_DATA.titleHighlight}
+      <div className="max-w-3xl mx-auto relative z-10 rev-scale">
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+          {heading.main} <br/>
+          <span className="text-brand inline-block hover:scale-105 transition-transform cursor-default">
+            {heading.highlight}
+          </span>
         </h2>
-        <p className="mb-[40px] text-[1.25rem] font-light font-Inter">
-          {CTA_DATA.description}
+        
+        <p className="text-slate-400 text-lg mb-10">
+          {description}
         </p>
-        <a 
-          href={CTA_DATA.btnLink} 
-          className="inline-flex items-center justify-center gap-[10px] px-[50px] py-[20px] font-Jakarta font-bold text-[1.15rem] rounded-[8px] transition-all duration-400 cursor-pointer bg-[#171E27] text-white shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:bg-black hover:-translate-y-[3px]"
-        >
-          {CTA_DATA.btnText}
-        </a>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button 
+            onClick={openModal}
+            className="bg-brand hover:bg-brandHover text-white font-display font-bold text-sm py-4 px-8 rounded-md transition-all shadow-[0_4px_20px_rgba(50,160,156,0.4)] hover:shadow-[0_8px_30px_rgba(50,160,156,0.6)] hover:-translate-y-1 flex justify-center items-center gap-2"
+          >
+            {primaryButton.text} 
+            <span className="material-symbols-outlined text-sm">
+              {primaryButton.icon}
+            </span>
+          </button>
+          
+          <a 
+            href={whatsappButton.url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-display font-bold text-sm py-4 px-8 rounded-md transition-colors flex justify-center items-center"
+          >
+            {whatsappButton.text}
+          </a>
+        </div>
       </div>
     </section>
   );

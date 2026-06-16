@@ -6,9 +6,9 @@ export const Hero = () => {
   return (
     <div>
       <Header />
-        <HeroN/>
-        <Stats/>
+      <HeroN />
+      <Stats />
     </div>
-        
+
   )
 }
