@@ -1,6 +1,7 @@
 // Footer.tsx
 import React from 'react';
 import { FOOTER_DATA } from '../../types/ctFooter';
+import { ArrowRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { brand, navigation, contact, bottomBar } = FOOTER_DATA;
@@ -8,24 +9,22 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-blue-200 pt-20 pb-10 px-6 md:px-12 border-t border-slate-800">
       <div className="max-w-360 mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 border-b border-slate-700/50 pb-16">
-        
+
         <div className="md:col-span-1">
           <a href="#" className="flex items-center gap-2 mb-6 group">
-           <img src="/images/mhAlter.svg" className='h-9' alt="" />
+            <img src="/images/mhAlter.svg" className='h-9' alt="" />
           </a>
           <p className="text-sm leading-relaxed mb-6 font-light text-slate-400">
             {brand.description}
           </p>
-          <a 
-            href={brand.corporateUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href={brand.corporateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-brand font-bold text-sm hover:text-white transition-colors group inline-flex items-center gap-1"
           >
-            {brand.corporateText} 
-            <span className="material-symbols-outlined text-sm transform group-hover:translate-x-1 transition-transform">
-              arrow_forward
-            </span>
+            {brand.corporateText}
+            <ArrowRight className='group-hover:translate-x-1 transition-transform' />
           </a>
         </div>
 
@@ -49,20 +48,23 @@ export const Footer: React.FC = () => {
             {contact.title}
           </h4>
           <ul className="space-y-4 text-sm font-light text-slate-400">
-            {contact.info.map((item) => (
-              <li key={item.id} className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-brand text-lg">
-                  {item.icon}
-                </span>
-                {item.href ? (
-                  <a href={item.href} className="hover:text-white transition-colors">
-                    {item.label}
-                  </a>
-                ) : (
-                  <span>{item.label}</span>
-                )}
-              </li>
-            ))}
+            {contact.info.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <li key={item.id} className="flex items-center gap-3">
+                  <Icon className="text-brand w-5 h-5" />
+
+                  {item.href ? (
+                    <a href={item.href} className="hover:text-white transition-colors">
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span>{item.label}</span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

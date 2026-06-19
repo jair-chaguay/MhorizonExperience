@@ -23,7 +23,7 @@ export const Header = () => {
       }`}
     >
       <a href="#" className="flex items-center gap-2 group">
-        <img src="/images/mh.svg" alt="MHORIZON Experience" className="h-8 object-contain transition-all duration-500" />
+        <img src="/images/mh.svg" alt="MHORIZON Experience" className="h-9 object-contain transition-all duration-500" />
       </a>
       
       <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 font-medium text-sm text-slate-600">

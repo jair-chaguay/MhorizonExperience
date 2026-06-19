@@ -39,7 +39,7 @@ export const Modalidades = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="bg-brand rounded-xl p-10 md:p-12 text-white shadow-2xl hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(50,160,156,0.4)] transition-all duration-300 relative overflow-hidden group"
+              className="bg-white rounded-xl p-10 md:p-12 text-blue-200 shadow-2xl hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(50,160,156,0.4)] transition-all duration-300 relative overflow-hidden group"
             >
               <div className={`absolute w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 ${modality.blobPosition}`}></div>
               
@@ -51,14 +51,14 @@ export const Modalidades = () => {
                 {modality.title}
               </h3>
               
-              <p className="text-white/90 text-sm leading-relaxed mb-8 font-light relative z-10">
+              <p className="text-blue-200/90 text-sm leading-relaxed mb-8 font-light relative z-10">
                 {modality.description}
               </p>
               
               <ul className="space-y-4 mb-10 text-sm font-medium relative z-10">
                 {modality.features.map((feature, index) => (
                   <li key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-sm bg-white/60"></div> 
+                    <div className="w-2 h-2 rounded-sm bg-brand/70"></div> 
                     {feature}
                   </li>
                 ))}
@@ -66,7 +66,7 @@ export const Modalidades = () => {
               
               <button 
               onClick={()=> openModal(modality.modalTarget)}
-              className="bg-white text-brand font-display font-bold text-sm py-4 px-8 rounded-md inline-block hover:bg-slate-100 transition-all relative z-10 shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer duration-300">
+              className="bg-brand/90 text-white font-display font-bold text-sm py-4 px-8 rounded-md inline-block hover:bg-brand transition-all relative z-10 shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer duration-300">
                 {modality.buttonText}
               </button>
             </motion.div>

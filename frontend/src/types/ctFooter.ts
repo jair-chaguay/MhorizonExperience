@@ -1,3 +1,4 @@
+import { Mail, Phone, MapPin, type LucideIcon } from "lucide-react";
 
 export interface FooterLink {
   label: string;
@@ -6,7 +7,7 @@ export interface FooterLink {
 
 export interface ContactInfo {
   id: string;
-  icon: string;
+  icon: LucideIcon;
   label: string;
   href?: string;
 }
@@ -37,8 +38,8 @@ export const FOOTER_DATA: FooterData = {
   brand: {
     name: "MHORIZON",
     description: "La Escuela Práctica de Control y Crecimiento Empresarial respaldada por la experiencia de consultoría corporativa de MHORIZON. Enseñamos lo que la empresa realmente exige.",
-    corporateUrl: "https://www.mhorizon.com/",
-    corporateText: "Visitar MHORIZON Corp."
+    corporateUrl: "https://prueba.miltonmontece.com/",
+    corporateText: "Visitar MHORIZON"
   },
   navigation: {
     title: "Navegación",
@@ -53,9 +54,9 @@ export const FOOTER_DATA: FooterData = {
   contact: {
     title: "Contáctanos",
     info: [
-      { id: "email", icon: "mail", label: "admisiones@mhorizon.com", href: "mailto:admisiones@mhorizon.com" },
-      { id: "phone", icon: "phone_iphone", label: "+593 99 000 0000 (WhatsApp)", href: "https://wa.me/59300000000" },
-      { id: "location", icon: "location_on", label: "Guayaquil, Ecuador" }
+      { id: "email", icon: Mail, label: "admisiones@mhorizon.com", href: "mailto:admisiones@mhorizon.com" },
+      { id: "phone", icon: Phone, label: "+593 99 000 0000 (WhatsApp)", href: "https://wa.me/59300000000" },
+      { id: "location", icon: MapPin, label: "Guayaquil, Ecuador" }
     ]
   },
   bottomBar: {
