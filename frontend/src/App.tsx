@@ -13,6 +13,7 @@ import { Origen } from "./components/Origen/Origen"
 import { Programa } from "./components/Programa/Programa"
 import { ProgramaEsp } from "./components/Programa/ProgramaEsp"
 import { Hero } from "./pages/Hero"
+import { CookieBanner } from "./components/Analytics/CookieBanner";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       
       <InscriptionModal /> 
       <WhatsAppFloat /> 
+      <CookieBanner />
       <Hero/>   
       <Origen/>  
       <Programa/> 
