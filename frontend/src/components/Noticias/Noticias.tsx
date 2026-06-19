@@ -43,7 +43,7 @@ export const Noticias = () => {
   }, []);
 
   return (
-    <section id="blog" className="py-24 bg-dark px-6 md:px-12 border-y border-slate-800">
+    <section id="notices" className="py-24 bg-dark px-6 md:px-12 border-y border-slate-800">
       <div className="max-w-360 mx-auto">
         
         <motion.div 

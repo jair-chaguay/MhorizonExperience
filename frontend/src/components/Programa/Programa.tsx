@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const Programa = () => {
   return (
-    <section id="value-props" className="py-24 bg-dark px-6 md:px-12 border-y border-slate-800 relative overflow-hidden">
+    <section id="programs" className="py-24 bg-dark px-6 md:px-12 border-y border-slate-800 relative overflow-hidden">
       <div className="max-w-360 mx-auto relative z-10">
         
         <motion.div 
