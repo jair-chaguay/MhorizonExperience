@@ -1,3 +1,7 @@
+import { ModalProvider } from "./components/ModalContext"; 
+import { InscriptionModal } from "./components/InscriptionModal"; 
+import { WhatsAppFloat } from "./components/WhatsAppFloat";
+
 import { Contacto } from "./components/Contacto/Contacto"
 import { Director } from "./components/Director/Director"
 import { Faq } from "./components/Faq/Faq"
@@ -11,9 +15,11 @@ import { ProgramaEsp } from "./components/Programa/ProgramaEsp"
 import { Hero } from "./pages/Hero"
 
 function App() {
-
   return (
-    <>
+    <ModalProvider>
+      
+      <InscriptionModal /> 
+      <WhatsAppFloat /> 
       <Hero/>   
       <Origen/>  
       <Programa/> 
@@ -25,7 +31,8 @@ function App() {
       <Contacto/>
       <Cta/>
       <Footer/>
-    </>
+      
+    </ModalProvider>
   )
 }
 

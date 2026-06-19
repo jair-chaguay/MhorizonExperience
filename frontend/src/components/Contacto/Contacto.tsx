@@ -1,20 +1,24 @@
 import { CONTACT_DATA } from '../../types/contacto.constants';
-
+import { motion } from 'framer-motion';
 export const Contacto = () => {
   const { bgImage, header, contactItems, whatsapp, form } = CONTACT_DATA;
 
   return (
-    <section 
-      id="contact" 
-      className="relative py-24 px-6 md:px-12  bg-fixed bg-center bg-cover" 
+    <section
+      id="contact"
+      className="relative py-24 px-6 md:px-12  bg-fixed bg-center bg-cover"
       style={{ backgroundImage: `url('${bgImage}')` }}
     >
       <div className="absolute inset-0 bg-white/85 backdrop-blur-sm z-0 pointer-events-none"></div>
-      
+
       <div className="max-w-360 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative z-10">
-        
-        {/* Contact Info Column */}
-        <div className="lg:col-span-5 rev-l">
+
+        <motion.div
+          initial={{ opacity: 0, x: -12 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-5 rev-l">
           <p className="text-brand font-bold tracking-widest text-xs uppercase mb-3">
             {header.badge}
           </p>
@@ -24,41 +28,48 @@ export const Contacto = () => {
           <p className="text-slate-500 text-lg mb-10 font-light">
             {header.description}
           </p>
-          
+
           <div className="space-y-8 mb-10">
-            {contactItems.map((item) => (
-              <div key={item.id} className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 cursor-default">
-                <div className="w-12 h-12 bg-white rounded-md shadow-md flex items-center justify-center text-brand border border-slate-100 shrink-0">
-                  <span className="material-symbols-outlined">{item.icon}</span>
+            {contactItems.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div key={item.id} className="flex items-center gap-4 hover:translate-x-2 transition-transform duration-300 cursor-default">
+                  <div className="w-12 h-12 bg-white rounded-md shadow-md flex items-center justify-center text-brand border border-slate-100 shrink-0">
+                    <Icon size={24} strokeWidth={2} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                      {item.subtitle}
+                    </p>
+                    <p className="font-display font-bold text-dark text-lg">
+                      {item.title}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    {item.subtitle}
-                  </p>
-                  <p className="font-display font-bold text-dark text-lg">
-                    {item.title}
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-          
-          {/* WhatsApp Button */}
-          <a 
-            href={whatsapp.url} 
-            target="_blank" 
+
+          <a
+            href={whatsapp.url}
+            target="_blank"
             rel="noopener noreferrer"
             className="bg-[#25D366] hover:bg-[#1ebb57] text-white font-display font-bold text-sm py-4 px-8 rounded-md transition-all shadow-[0_4px_20px_rgba(37,211,102,0.3)] hover:shadow-[0_8px_25px_rgba(37,211,102,0.5)] hover:-translate-y-1 inline-flex items-center gap-3"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+              <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.91c0 2.1.55 4.15 1.59 5.96L0 24l6.32-1.66a11.88 11.88 0 0 0 5.75 1.47h.01c6.57 0 11.91-5.34 11.91-11.91 0-3.18-1.24-6.17-3.47-8.42zM12.08 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.75.98 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.25c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.12 1.03 6.98 2.89a9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.43 9.89-9.85 9.89zm5.42-7.42c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.79-1.5-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.22 1.35.19 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" />
             </svg>
             {whatsapp.text}
           </a>
-        </div>
+        </motion.div>
 
-        {/* Form Column */}
-        <div className="lg:col-span-7 rev-r">
+        <motion.div
+          initial={{ opacity: 0, x: 12 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-7 rev-r">
           <div className="bg-white rounded-xl p-10 md:p-14 shadow-2xl border border-slate-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-shadow duration-500">
             <h3 className="font-display text-2xl font-bold text-dark mb-2">
               {form.title}
@@ -66,7 +77,7 @@ export const Contacto = () => {
             <p className="text-slate-500 text-sm mb-8">
               {form.description}
             </p>
-            
+
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -78,17 +89,17 @@ export const Contacto = () => {
                   <input type="text" id="lname" className="w-full bg-slate-50 border border-slate-200 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all" placeholder="Tu apellido" />
                 </div>
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-xs font-bold text-slate-700 mb-2">Correo Electrónico</label>
                 <input type="email" id="email" className="w-full bg-slate-50 border border-slate-200 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all" placeholder="tu@correo.com" />
               </div>
-              
+
               <div>
                 <label htmlFor="tel" className="block text-xs font-bold text-slate-700 mb-2">Teléfono / WhatsApp</label>
                 <input type="tel" id="tel" className="w-full bg-slate-50 border border-slate-200 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all" placeholder="+593 99 000 0000" />
               </div>
-              
+
               <div>
                 <label htmlFor="modalidad" className="block text-xs font-bold text-slate-700 mb-2">Programa de Interés</label>
                 <select id="modalidad" defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 text-slate-600 transition-all">
@@ -100,18 +111,18 @@ export const Contacto = () => {
                   ))}
                 </select>
               </div>
-              
+
               <button type="button" id="formBtn" className="w-full bg-brand hover:bg-brandHover text-white font-display font-bold py-4 rounded-md transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 mt-2">
                 {form.buttonText}
               </button>
-              
+
               <p className="text-center text-xs text-slate-400 mt-4">
                 {form.disclaimer}
               </p>
             </form>
           </div>
-        </div>
-        
+        </motion.div>
+
       </div>
     </section>
   );

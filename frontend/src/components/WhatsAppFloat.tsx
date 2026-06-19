@@ -1,28 +1,15 @@
-
 export const WhatsAppFloat = () => {
   return (
-    <>
-      <style>
-        {`
-          @keyframes pulse-wa {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-          }
-          .animate-pulse-wa {
-            animation: pulse-wa 2s infinite ease-out;
-          }
-        `}
-      </style>
-      <a 
-        href="https://wa.me/59300000000" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        aria-label="WhatsApp"
-        className="fixed bottom-[20px] right-[20px] md:bottom-[30px] md:right-[30px] bg-[#25D366] text-white w-[60px] h-[60px] md:w-[70px] md:h-[70px] rounded-full flex justify-center items-center text-[35px] md:text-[40px] shadow-[0_10px_25px_rgba(37,211,102,0.4)] z-[1000] transition-all duration-300 animate-pulse-wa hover:scale-110 hover:bg-[#1EBE53] hover:animate-none"
-      >
-        <i className="ph-fill ph-whatsapp-logo"></i>
-      </a>
-    </>
+    <a
+      href="https://wa.me/59300000000"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+      className="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] text-white rounded-md flex items-center justify-center shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_8px_30px_rgba(37,211,102,0.6)] transition-all z-90"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
+        <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.91c0 2.1.55 4.15 1.59 5.96L0 24l6.32-1.66a11.88 11.88 0 0 0 5.75 1.47h.01c6.57 0 11.91-5.34 11.91-11.91 0-3.18-1.24-6.17-3.47-8.42zM12.08 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.75.98 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.25c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.12 1.03 6.98 2.89a9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.43 9.89-9.85 9.89zm5.42-7.42c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.79-1.5-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.22 1.35.19 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" />
+      </svg>
+    </a>
   );
 };

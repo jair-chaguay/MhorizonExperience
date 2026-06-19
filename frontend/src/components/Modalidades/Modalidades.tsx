@@ -1,18 +1,18 @@
 import { motion } from 'framer-motion';
 import { MODALITIES_DATA } from '../../types/modalidades.constants';
+import { useModal } from '../ModalContext';
 
 export const Modalidades = () => {
   const { header, modalities } = MODALITIES_DATA;
+  const {openModal} = useModal();
 
   return (
     <section id="modalities" className="py-24 bg-dark px-6 md:px-12 relative overflow-hidden">
-      {/* Elementos de fondo */}
       <div className="absolute inset-0 opacity-10 animated-grid pointer-events-none"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-brand/5 rounded-full blur-[150px] pointer-events-none"></div>
 
-      <div className="max-w-[1440px] mx-auto relative z-10">
+      <div className="max-w-360 mx-auto relative z-10">
         
-        {/* Header Animado */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,6 @@ export const Modalidades = () => {
           </p>
         </motion.div>
 
-        {/* Tarjetas */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {modalities.map((modality) => (
             <motion.div 
@@ -65,7 +64,9 @@ export const Modalidades = () => {
                 ))}
               </ul>
               
-              <button className="bg-white text-brand font-display font-bold text-sm py-4 px-8 rounded-md inline-block hover:bg-slate-100 transition-colors relative z-10 shadow-lg hover:shadow-xl hover:-translate-y-1">
+              <button 
+              onClick={()=> openModal(modality.modalTarget)}
+              className="bg-white text-brand font-display font-bold text-sm py-4 px-8 rounded-md inline-block hover:bg-slate-100 transition-all relative z-10 shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer duration-300">
                 {modality.buttonText}
               </button>
             </motion.div>

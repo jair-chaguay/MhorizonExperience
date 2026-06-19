@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
-import { Download } from 'lucide-react';
 import { PROGRAMS_DATA } from '../../types/programaesp.constant';
+import { useModal } from '../ModalContext';
 
 export const ProgramaEsp = () => {
   const { header, programs } = PROGRAMS_DATA;
+  const {openModal} = useModal();
 
   return (
     <section id="programs" className="py-24 px-6 md:px-12 max-w-360 mx-auto overflow-hidden">
       
-      {/* Header Animado */}
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -27,7 +27,6 @@ export const ProgramaEsp = () => {
         </p>
       </motion.div>
 
-      {/* Grid de Programas */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {programs.map((program) => {
           const IconComponent = program.icon;
@@ -47,7 +46,7 @@ export const ProgramaEsp = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                   alt={program.title} 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-dark/90 to-transparent"></div>
                 <div className="absolute top-6 left-6 bg-brand text-white font-display text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-sm shadow-md">
                   {program.audience}
                 </div>
@@ -66,12 +65,10 @@ export const ProgramaEsp = () => {
                 </p>
                 
                 <div className="flex items-center gap-4 border-t border-slate-800 pt-6">
-                  <button className="bg-brand text-white font-display font-bold text-sm py-3 px-6 rounded-md hover:bg-brandHover transition-colors grow text-center shadow-md hover:shadow-lg">
+                  <button className="bg-brand text-white font-display font-bold text-sm py-3 px-6 rounded-md hover:bg-brandHover transition-colors grow text-center shadow-md hover:shadow-lg cursor-pointer"
+                  onClick={()=> openModal(program.title)}>
                     Inscribirme
                   </button>
-                  <a href="#" className="text-brand font-bold text-sm hover:text-white transition-colors flex items-center gap-1 group/btn">
-                    Syllabus <Download className="w-4 h-4 group-hover/btn:translate-y-1 transition-transform" />
-                  </a>
                 </div>
               </div>
             </motion.div>

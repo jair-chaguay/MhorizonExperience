@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { HERO_CONTENT } from "../../types/hero.constants";
+import { useModal } from '../ModalContext';
 
 export const HeroN = () => {
+   const {openModal} = useModal();
   return (
     <section className="relative min-h-[95vh] flex flex-col justify-center pt-32 pb-20 px-6 md:px-12 overflow-hidden bg-transparent">
       
@@ -40,7 +42,8 @@ export const HeroN = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
             className="flex flex-wrap items-center gap-6"
           >
-            <button className="bg-brand hover:bg-brandHover text-white font-body font-medium text-base py-3 px-6 rounded-md transition-all shadow-[0_4px_15px_rgba(50,160,156,0.4)] hover:shadow-[0_8px_25px_rgba(50,160,156,0.5)] hover:-translate-y-1 duration-300 cursor-pointer">
+            <button onClick={()=> openModal("Inscripción General")} 
+            className="bg-brand hover:bg-brandHover text-white font-body font-medium text-base py-3 px-6 rounded-md transition-all shadow-[0_4px_15px_rgba(50,160,156,0.4)] hover:shadow-[0_8px_25px_rgba(50,160,156,0.5)] hover:-translate-y-1 duration-300 cursor-pointer">
               {HERO_CONTENT.btnPrimaryText}
             </button>
             <a href={HERO_CONTENT.primaryLink} className="text-slate-700 hover:text-brand font-body font-medium text-base py-3 px-4 transition-colors flex items-center gap-2 group">

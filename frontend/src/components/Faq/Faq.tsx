@@ -1,6 +1,8 @@
 // src/components/Faq.tsx
 import { useState } from 'react';
+import {motion} from 'framer-motion'
 import { FAQ_HEADER, FAQ_DATA } from '../../types/faq.constants';
+import {Plus} from "lucide-react"
 
 export const Faq = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -12,11 +14,16 @@ export const Faq = () => {
   return (
     <section className="py-24 px-6 md:px-12 max-w-360 mx-auto">
 
-      <div className="text-center mb-16">
+      <motion.div 
+      initial={{opacity:0, y:40}}
+      whileInView={{opacity:1, y:0}}
+      viewport={{once:true, amount: 0.5}}
+      transition={{duration:0.8, ease: "easeOut"}}
+      className="text-center mb-16">
         <p className="text-brand font-bold tracking-widest text-xs uppercase mb-3">{FAQ_HEADER.overline}</p>
         <h2 className="font-display text-4xl font-extrabold text-dark tracking-tight mb-4">{FAQ_HEADER.title}</h2>
         <p className="text-slate-500 font-light">{FAQ_HEADER.subtitle}</p>
-      </div>
+      </motion.div>
 
       <div className="max-w-200 mx-auto mt-10" data-aos="fade-up" data-aos-delay="100">
 
@@ -24,7 +31,11 @@ export const Faq = () => {
           const isActive = activeIndex === index;
 
           return (
-            <div
+            <motion.div
+            initial={{opacity:0, scale:0.9}}
+            whileInView={{opacity:1, scale:1}}
+            viewport={{once:true, amount: 0.5}}
+            transition={{duration:0.6, ease:"backIn"}}
               key={faq.id}
               className={`mb-3.75 overflow-hidden transition-all duration-300 rounded-2xl border-2 shadow-[0_5px_15px_rgba(0,0,0,0.05)]
                   ${isActive
@@ -38,13 +49,13 @@ export const Faq = () => {
               >
                 {faq.question}
 
-                <div className={`w-10 h-10 rounded-full flex justify-center items-center text-[1.2rem] shrink-0 transition-transform duration-300
+                <div className={`w-10 h-10  rounded-md flex justify-center items-center text-[1.2rem] shrink-0 transition-transform duration-300
                     ${isActive
-                    ? "bg-[#515858] text-white rotate-45"
-                    : "bg-[#F4F7F9] text-[#475569] rotate-0"
+                    ? "bg-brand text-white rotate-90"
+                    : "bg-brand/10 text-brand rotate-0"
                   }`}
                 >
-                  <i className="ph-bold ph-plus"></i>
+                  <Plus className='w-4'/>
                 </div>
               </div>
 
@@ -60,7 +71,7 @@ export const Faq = () => {
                 </div>
               </div>
 
-            </div>
+            </motion.div>
           );
         })}
 

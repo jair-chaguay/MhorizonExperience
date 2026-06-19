@@ -1,7 +1,8 @@
+import {Phone, MapPin, Mail, type LucideIcon} from "lucide-react"
 
 export interface ContactItem {
   id: string;
-  icon: string;
+  icon: LucideIcon;
   subtitle: string;
   title: string;
 }
@@ -42,19 +43,19 @@ export const CONTACT_DATA: ContactSectionData = {
   contactItems: [
     {
       id: "phone",
-      icon: "call",
+      icon: Phone,
       subtitle: "Llámanos o escríbenos",
       title: "+593 99 000 0000"
     },
     {
       id: "location",
-      icon: "location_on",
+      icon: MapPin,
       subtitle: "Escuela Práctica",
       title: "Guayaquil, Ecuador"
     },
     {
       id: "email",
-      icon: "mail",
+      icon: Mail,
       subtitle: "Correo de admisiones",
       title: "admisiones@mhorizon.com"
     }
@@ -87,7 +88,6 @@ export interface CtaSectionData {
   description: string;
   primaryButton: {
     text: string;
-    icon: string;
   };
   whatsappButton: {
     text: string;
@@ -103,7 +103,6 @@ export const CTA_DATA: CtaSectionData = {
   description: "Inscríbete en el primer módulo y empieza a transformar tus decisiones hoy. Cupos limitados por aula.",
   primaryButton: {
     text: "Asegurar mi lugar",
-    icon: "arrow_forward"
   },
   whatsappButton: {
     text: "Consultar por WhatsApp",

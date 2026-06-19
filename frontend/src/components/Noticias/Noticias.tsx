@@ -1,55 +1,118 @@
-import { NOTICIAS_HEADER, NOTICIAS_DATA } from "../../types/noticias.constants";
+import { useEffect, useState } from "react";
+import { NOTICIAS_HEADER } from "../../types/noticias.constants"; import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import api from "../../api/axios"; 
+
+interface NewsItem {
+  id: string | number;
+  image: string;
+  tag: string;
+  title: string;
+  link: string;
+}
 
 export const Noticias = () => {
-  return (
-    <section id="noticias" className="py-30 w-full bg-[#F4F7F9]">
-      <div className="max-w-310 mx-auto px-[5%]">
+  const [newsData, setNewsData] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNoticias = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get('/informativo');
         
-        <div className="text-center" data-aos="fade-up">
-          <span className="inline-block font-Jakarta font-bold text-[0.85rem] uppercase tracking-[2px] text-[#32A09C] mb-3.75">
+        const lista = response.data.informativos || [];
+        
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const mapeados = lista.slice(0, 3).map((info: any) => ({
+          id: info.id,
+          image: info.imagen_portada_url || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", 
+          tag: info.resolucion_oficial || "Actualidad", 
+          title: info.titulo,
+          link: `https://prueba.miltonmontece.com/novedades-sub/${info.id}` 
+        }));
+        setNewsData(mapeados);
+      } catch (error) {
+        console.error("Error al obtener noticias:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNoticias();
+  }, []);
+
+  return (
+    <section id="blog" className="py-24 bg-dark px-6 md:px-12 border-y border-slate-800">
+      <div className="max-w-360 mx-auto">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <p className="text-brand font-bold tracking-widest text-xs uppercase mb-3">
             {NOTICIAS_HEADER.overline}
-          </span>
-          <h2 className="text-[#0F172A] font-Jakarta font-bold text-[clamp(2.2rem,4vw,3.2rem)] leading-[1.2] tracking-[-0.02em] m-0">
+          </p>
+          <h2 className="font-display text-4xl font-extrabold text-white tracking-tight mb-4">
             {NOTICIAS_HEADER.title}
           </h2>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7.5 mt-12.5">
-          
-          {NOTICIAS_DATA.map((news) => (
-            <div 
-              key={news.id}
-              className="bg-blue-200 rounded-2xl overflow-hidden border border-white/5 transition-all duration-400 flex flex-col hover:border-[#32A09C] hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1.25"
-              data-aos="fade-up" 
-              data-aos-delay={news.delay}
-            >
-              <img 
-                src={news.image} 
-                alt={news.title} 
-                className="h-50 w-full object-cover"
-              />
-              
-              <div className="p-7.5 grow flex flex-col">
-                <span className="text-[#32A09C] text-[0.8rem] font-bold uppercase tracking-[1px] mb-3 block">
-                  {news.tag}
-                </span>
-                
-                <h4 className="text-white font-Jakarta font-bold text-[1.15rem] leading-[1.3] mb-3.75 grow tracking-[-0.02em]">
-                  {news.title}
-                </h4>
-                
-                <a 
-                  href={news.link} 
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#32A09C] rounded-lg text-white text-[0.95rem] font-bold font-Jakarta transition-all duration-400 mt-3.75 hover:bg-[#32A09C] hover:-translate-y-0.75 hover:shadow-[0_10px_20px_rgba(50,160,156,0.3)]"
+          <p className="text-slate-400 font-light">
+            {NOTICIAS_HEADER.description}
+          </p>
+        </motion.div>
+
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {newsData.length > 0 ? (
+              newsData.map((news, index) => (
+                <motion.div 
+                  key={news.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }} 
+                  className="bg-white rounded-xl p-6 border border-slate-100 hover:border-brand shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col group cursor-pointer"
                 >
-                  Leer artículo <i className="ph-bold ph-arrow-right"></i>
-                </a>
-              </div>
+                  <div className="h-48 rounded-md overflow-hidden mb-6 bg-slate-200 relative">
+                    <img 
+                      src={news.image} 
+                      alt={news.title} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                  </div>
+                  
+                  <span className="text-brand text-[10px] font-bold tracking-widest uppercase mb-3 line-clamp-1">
+                    {news.tag}
+                  </span>
+                  
+                  <h3 className="font-display text-xl font-bold text-dark mb-4 group-hover:text-brand transition-colors grow line-clamp-3">
+                    {news.title}
+                  </h3>
+                  
+                  <a 
+                    href={news.link} 
+                    className="text-brand font-bold text-sm flex items-center gap-1 uppercase tracking-wider group/link mt-auto"
+                  >
+                    Leer artículo 
+                    <ArrowRight size={16} className="transform group-hover/link:translate-x-1 transition-transform" />
+                  </a>
 
-            </div>
-          ))}
-
-        </div>
+                </motion.div>
+              ))
+            ) : (
+              <p className="col-span-full text-center text-slate-500 italic">
+                No hay informativos publicados aún.
+              </p>
+            )}
+          </div>
+        )}
 
       </div>
     </section>

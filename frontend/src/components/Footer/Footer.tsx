@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
         
         <div className="md:col-span-1">
           <a href="#" className="flex items-center gap-2 mb-6 group">
-           <img src="/public/images/mhAlter.svg" className='h-9' alt="" />
+           <img src="/images/mhAlter.svg" className='h-9' alt="" />
           </a>
           <p className="text-sm leading-relaxed mb-6 font-light text-slate-400">
             {brand.description}

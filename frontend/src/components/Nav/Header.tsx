@@ -1,8 +1,10 @@
 import  { useState, useEffect } from 'react';
 import { NAV_LINK_STYLES, NAV_ITEMS } from "../../utils/constants";
+import { useModal } from '../ModalContext';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const {openModal} = useModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +38,8 @@ export const Header = () => {
         <a href="#" className="text-slate-600 hover:text-brand font-medium text-sm transition-colors">
           Campus Virtual
         </a>
-        <button className="bg-brand hover:bg-brandHover cursor-pointer text-white font-medium text-sm py-2 px-5 rounded-md transition-all shadow-[0_4px_15px_rgba(50,160,156,0.3)] hover:shadow-[0_6px_20px_rgba(50,160,156,0.5)] hover:-translate-y-0.5 duration-300">
+        <button className="bg-brand hover:bg-brandHover cursor-pointer text-white font-medium text-sm py-2 px-5 rounded-md transition-all shadow-[0_4px_15px_rgba(50,160,156,0.3)] hover:shadow-[0_6px_20px_rgba(50,160,156,0.5)] hover:-translate-y-0.5 duration-300"
+        onClick={()=> (openModal("General"))}>
           Inscribirme
         </button>
       </div>
