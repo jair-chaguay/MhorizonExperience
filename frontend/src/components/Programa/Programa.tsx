@@ -1,5 +1,24 @@
 import { VALUE_PROPS_HEADER, VALUE_PROPS_DATA } from '../../types/programa.constants' 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion'; 
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2 
+    }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    transition: { duration: 0.6, ease: "easeOut" } 
+  }
+};
 
 export const Programa = () => {
   return (
@@ -24,17 +43,20 @@ export const Programa = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {VALUE_PROPS_DATA.map((item) => {
             const IconComponent = item.icon;
             
             return (
               <motion.div 
                 key={item.id} 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: item.delay, ease: "easeOut" }}
+                variants={itemVariants} 
                 className="bg-white p-8 rounded-xl border border-slate-100 hover:-translate-y-3 hover:shadow-2xl transition-all duration-300 shadow-lg flex flex-col"
               >
                 <div className="w-14 h-14 bg-brand/10 rounded-md flex items-center justify-center text-brand mb-6">
@@ -49,7 +71,7 @@ export const Programa = () => {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
         
       </div>
     </section>

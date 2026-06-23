@@ -1,10 +1,13 @@
 // Footer.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { FOOTER_DATA } from '../../types/ctFooter';
 import { ArrowRight } from 'lucide-react';
+import { ModalPolicies } from '../ModalPolicies'; 
 
 export const Footer: React.FC = () => {
   const { brand, navigation, contact, bottomBar } = FOOTER_DATA;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <footer className="bg-blue-200 pt-20 pb-10 px-6 md:px-12 border-t border-slate-800">
@@ -71,12 +74,16 @@ export const Footer: React.FC = () => {
 
       <div className="max-w-360 mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 font-medium tracking-wide">
         <p>
-          {bottomBar.copyright} · <a href={bottomBar.privacyUrl} className="hover:text-brand transition-colors">Política de Privacidad</a>
+          {bottomBar.copyright} · <button onClick={() => setIsModalOpen(true)} className='hover:text-brand transition-colors cursor-pointer'>Política de Privacidad</button>
         </p>
         <p className="mt-4 md:mt-0">
           Respaldado por <a href={bottomBar.backedByUrl} target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand transition-colors font-bold">MHORIZON&nbsp;Corp.</a>
         </p>
       </div>
+      <ModalPolicies 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </footer>
   );
 };

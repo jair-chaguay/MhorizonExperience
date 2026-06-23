@@ -9,7 +9,7 @@ export const Modalidades = () => {
   return (
     <section id="modalities" className="py-24 bg-dark px-6 md:px-12 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10 animated-grid pointer-events-none"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-brand/5 rounded-full blur-[150px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,_rgba(50,160,156,0.1)_0%, transparent_60%)] rounded-full pointer-events-none"></div>
 
       <div className="max-w-360 mx-auto relative z-10">
         
@@ -43,7 +43,7 @@ export const Modalidades = () => {
             >
               <div className={`absolute w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 ${modality.blobPosition}`}></div>
               
-              <div className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-sm w-fit mb-6 relative z-10">
+              <div className="bg-blue-200/5 backdrop-blur-md text-blue-200 text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-sm w-fit mb-6 relative z-10">
                 {modality.badge}
               </div>
               

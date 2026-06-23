@@ -1,4 +1,4 @@
-import { Award, Users, Network, Coffee, BookOpen, MonitorPlay } from 'lucide-react';
+import { Award, Users, Network, BookOpen, MonitorPlay, Briefcase } from 'lucide-react';
 
 export const VALUE_PROPS_HEADER = {
   overline: "Tu Ecosistema de Crecimiento",
@@ -25,14 +25,14 @@ export const VALUE_PROPS_DATA = [
     id: 3,
     icon: Network,
     title: "Networking Empresarial",
-    description: "Conecta y haz relaciones de valor con docentes en ejercicio, dueños de negocios y compañeros con tus mismos objetivos de crecimiento.",
+    description: "Crea relaciones de valor con empresarios y compañeros que comparten tus metas. Además, celebramos cada módulo con un Café Empresarial para afianzar tu red de contactos.",
     delay: 0.3
   },
   {
     id: 4,
-    icon: Coffee,
-    title: "Cierres Especiales",
-    description: "Al finalizar cada módulo, celebramos tu avance con un Café Empresarial o un taller interactivo para afianzar la comunidad.",
+    icon: Briefcase,
+    title: "Instructores Expertos y Activos",
+    description: "Aprende de profesionales altamente capacitados que trabajan día a día en el mundo de la auditoría y los negocios, enseñándote a resolver desafíos reales del mercado.",
     delay: 0.1
   },
   {

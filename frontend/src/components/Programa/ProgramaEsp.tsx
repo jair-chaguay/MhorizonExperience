@@ -64,10 +64,13 @@ export const ProgramaEsp = () => {
                   {program.description}
                 </p>
                 
-                <div className="flex items-center gap-4 border-t border-slate-800 pt-6">
-                  <button className="bg-brand text-white font-display font-bold text-sm py-3 px-6 rounded-md hover:bg-brandHover transition-colors grow text-center shadow-md hover:shadow-lg cursor-pointer"
+                <div className="flex flex-col max-w-full items-center gap-4 border-t border-slate-800 pt-6">
+                  <button className="bg-brand text-white font-display font-bold text-sm py-3 px-6 w-full rounded-md hover:bg-brandHover transition-colors grow text-center shadow-md hover:shadow-lg cursor-pointer"
                   onClick={()=> openModal(program.title)}>
                     Inscribirme
+                  </button>
+                  <button className='bg-green-500 text-white rounded-md hover:bg-brandHover w-full transition-colors duration-300 cursor-pointer text-sm py-3 px-6 font-bold font-display'>
+                    Contenido
                   </button>
                 </div>
               </div>
