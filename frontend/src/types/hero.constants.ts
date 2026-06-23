@@ -4,6 +4,6 @@ export const HERO_CONTENT = {
     description: "La Escuela Práctica de Control y Crecimiento Empresarial. Entiende tus números, domina los impuestos y toma decisiones seguras con el respaldo de una firma consultora activa.",
     btnPrimaryText: "Inscribirme hoy",
     btnSecondaryText: "Ver Módulos",
-    primaryLink: "#programa",
+    primaryLink: "#programs",
     descriptionLink: "Ver los programas"
 }
